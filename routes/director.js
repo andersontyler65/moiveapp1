@@ -5,15 +5,13 @@ const knex = require('../knex')
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   knex('director')
-    .select()
-    .orderBy('')
+    .select('name', 'nationality')
+    .orderBy('id')
     .then((items) => {
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(items));
     })
-  res.render('index', {
-    title: 'Express'
-  })
+  .catch((err) => next(err))
 });
 
 module.exports = router;
