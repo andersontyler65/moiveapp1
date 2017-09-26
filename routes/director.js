@@ -27,10 +27,9 @@ router.get('/:id', function(req, res, next) {
   .catch((err) => next(err))
 })
 
-router.post('/', (req, res, next) => {
-  //const { item } = req.body
+router.post('/', function(req, res, next) {
   knex('director')
-  .insert(req.body, 'id')
+  .insert(req.body)
     .then((id)=> {
       res.setHeader ('Content-Type', 'application/json')
       res.sendStatus(200)
