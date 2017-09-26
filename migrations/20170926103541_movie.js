@@ -5,6 +5,10 @@ exports.up = function(knex, Promise) {
     table.varchar('title').notNullable()
     table.varchar('year').notNullable()
     table.integer('director_id').notNullable()
+      .references('id')
+      .inTable('director')
+      .onDelete('CASCADE')
+      .index()
 });
 };
 
